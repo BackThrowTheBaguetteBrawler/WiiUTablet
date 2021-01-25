@@ -1,4 +1,4 @@
-package pl.pewnypl.wiiutablet;
+package src.pl.pewnypl.wiiutablet;
 
 import java.awt.AWTException;
 import java.awt.GraphicsDevice;
@@ -23,10 +23,10 @@ public class Main extends WebSocketServer {
 	
 	int lastState=0;
 	
-	static int resX = 1920;
-	static int resY = 1080;
-	static int resWiiX = 854;
-	static int resWiiY = 480;
+	static int resX = 1900;
+	static int resY = 1060;
+	static int resWiiX = 1380;
+	static int resWiiY = 720;
 	
 	float xFact=1;
 	float yFact=1;
@@ -76,14 +76,14 @@ public class Main extends WebSocketServer {
 				if(lastState == 0)
 				{
 					lastState = 1;
-					robot.mousePress(InputEvent.BUTTON1_MASK);
 				}
 			}
-			else if(lastState == 1)
-			{
-				lastState = 0;
-				robot.mouseRelease(InputEvent.BUTTON1_MASK);			
-			}
+				if(Integer.parseInt(sp[3])==1){
+					robot.mousePress(InputEvent.BUTTON1_MASK);
+				}
+				    else{
+				        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+				    }
 		}
 		catch(Exception e)
 		{
